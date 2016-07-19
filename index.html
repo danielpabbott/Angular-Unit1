@@ -3,13 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title>{{greeting}} World</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js">
-
-    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
   </head>
   <body>
     <p>{{1 + 6}}</p>
     <p>Say something to the world <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
-<p>{{ greeting }} world!</p>
+    <p>{{ greeting }} world!</p>
+    <input type="text" placeholder="What is your name?" ng-model="name">
+    <h1>My name is: {{name || 'BoJack'}}</h1>
+    <select name="pets" ng-model="pets">
+        <option>Dogs</option>
+        <option>Cats</option>
+        <option>Dogs and Cats</option>
+        <option>Neither</option>
+    </select>
+    <h3>I love {{pets}} <3</h3>
   </body>
 </html>
