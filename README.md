@@ -70,4 +70,11 @@ A: Yes
 
 Q: We'll soon see how to create custom filters. What is a use case for a custom filter?
 
-A: Specific formatting. 
+A: Specific formatting.
+
+
+BUILT-IN DIRECTIVES
+
+Q: Name at least three built-in directives that we have used so far.
+
+A: ng-app, ng-model, ng-init
