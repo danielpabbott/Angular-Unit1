@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>{{greeting}} World - Intro</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  </head>
+  <body>
+    <p>{{1 + 6}}</p>
+    <p>Say something to the world <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
+    <p>{{ greeting }} world!</p>
+    <input type="text" placeholder="What is your name?" ng-model="name">
+    <h1>My name is: {{name || 'BoJack'}}</h1>
+    <select name="pets" ng-model="pets">
+        <option>Dogs</option>
+        <option>Cats</option>
+        <option>Dogs and Cats</option>
+        <option>Neither</option>
+    </select>
+    <h3>I love {{pets}} <3</h3>
+    {{3.14159265359 | currency : "€"}}<br>
+    <label for="say">Please say something</label>
+    <input type="text" id="say" ng-model="say">
+    <p>Yelling: {{say | uppercase}}</p>
+    <p>Whispering: {{say | lowercase}}</p>
+    {{3.14159265359 | number:3}}<br>
+    {{3.14159265359 | number:6}}<br>
+    {{3.14159265359 | number:1}}<br><br>
+
+    How many digits of Pi do you want?
+    <select name="pi" ng-model="piNum">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+    </select>
+    <br>
+    Here you go! The first {{piNum}}
+    <ng-pluralize count="piNum"
+      when="{'1': 'digit',
+      'other': 'digits'}">
+    </ng-pluralize>
+    of pi!
+    <br>
+    {{3.14159265359 | number:piNum}}<br>
+
+    <br><br>
+
+    <h1>Super Useful Tip Calculator</h1>
+    How much did your meal cost?
+    <input type="text" name="cost" ng-model="cost"><br>
+    How much do you want to tip?<br>
+    <select name="tip" ng-model="tip">
+      <option value=".1">10%</option>
+      <option value=".15">15%</option>
+      <option value=".2">20%</option>
+      <option value=".25">25%</option>
+    </select><br>
+    <h2>Subtotal: {{cost | currency}}</h2>
+    <h2>Tip: {{cost * tip | currency}}</h2>
+
+    <div>{{this}}</div>
+
+    <h1>Please fill out the following!</h1>
+    <label for="boysname">Boy's Name</label><br>
+    <input type="text" id='boysname' name="boysname" ng-model='boysname'><br><br>
+    <label for="adjective">Adjective</label><br>
+    <input type="text" id='adjective' name="adjective" ng-model='adjective'><br><br>
+    <label for="plural1">Plural Noun</label><br>
+    <input type="text" id='plural1' name="plural1" ng-model='plural1'><br><br>
+    <label for="plural2">Plural Noun</label><br>
+    <input type="text" id='plural2' name="plural2" ng-model='plural2'><br><br>
+    <label for="insect">An insect, plural</label><br>
+    <input type="text" id='insect' name="insect" ng-model='insect'><br><br>
+    <label for="plural3">Plural Noun</label><br>
+    <input type="text" id='plural3' name="plural3" ng-model='plural3'><br><br>
+    <label for="verb">A verb ending in "s"</label><br>
+    <input type="text" id='verb' name="verb" ng-model='verb'><br><br>
+
+    <h2>Mad with the Libs</h2>
+    <p>I'm in love with {{boysname | uppercase}}. He's so {{adjective | uppercase}}! He has big flat {{plural1 | uppercase}}, and when our {{plural2 | uppercase}} meet, I get {{insect | uppercase}} in my stomach. I've fallen for him like a ton of {{plural3 | uppercase}}, and he {{verb | uppercase}} me, too. But I think he's got another girlfriend. What should I do?</p>
+
+    <ul ng-init="names=['Harry', 'Ron', 'Hermione', 'Sirius', 'Hedwig', 'Tonks']">
+      <li ng-repeat='name in names'>
+        {{name}}
+      </li>
+    </ul>
+
+    <ul ng-init="symbols=['Spades', 'Clubs', 'Hearts', 'Diamonds']">
+      <li ng-repeat='symbol in symbols'>
+        {{symbol}}
+      </li>
+    </ul>
+
+    <ul ng-init="things=[1,1,2,5,6,9,9,9]">
+      <li ng-repeat='thing in things track by $index'>
+        {{thing}}
+      </li>
+    </ul>
+
+    <ul ng-init="humans=[{name: 'Daniel'}, {name: 'Tim'}, {name: 'Bennett'}, {name:'Bradford'}]">
+      <li ng-repeat='human in humans'>
+        {{human.name}}
+      </li>
+    </ul>
+
+    <ul ng-init="people=[{name: 'Daniel', favColor: 'blue', fast: 'yes'},  {name: 'Bradford', favColor: 'pink', fast: 'no'}]">
+      <li ng-repeat='person in people'>
+        Name: {{person.name}} <br>
+        Favorite Color: {{person.favColor}} <br>
+        Are they fast?: {{person.fast}}
+      </li>
+    </ul>
+
+    <h1>Sign up page</h1>
+    <input type="password" name="password" ng-model="password" ng-class='{red: password.length<6, green: password.length>5}'><br>
+    <div ng-class='{red: password.length<6, green: password.length>5}'>
+      Your password is {{password.length}} <ng-pluralize count="password"
+      when="{'undefined': '0 characters',
+        '0': 'characters',
+        '1': 'character',
+        'other': 'characters'}">
+    </div>
+    </ng-pluralize><br><br>
+    <div ng-show='password.length < 6'>Password is invalid</div>
+    <button ng-show='password.length > 5'>Sign Up!</button>
+
+
+
+
+
+
+  <br><br><br><br><br><br><br><h1>The End</h1></body>
+</html>
