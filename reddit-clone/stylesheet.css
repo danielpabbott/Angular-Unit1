@@ -1,0 +1,7 @@
+* {
+  outline: 1px solid red;
+}
+.posts {
+  width: 85vh;
+  margin-top: 20px;
+}
