@@ -24,6 +24,7 @@
         </ul>
       </div>
     </nav>
+
     <div class="container add" ng-show="postForm">
       <div class="row center">
         <h4>Add an Article</h4>
@@ -51,7 +52,27 @@
             <h5>{{post.title}} | <i class="material-icons" ng-click="upVote()">thumb_up</i> <i class="material-icons" ng-click="downVote()">thumb_down</i> <span ng-class="{positive: post.rating>0, negative:post.rating<0}">{{post.rating}}</span></h5>
             <p class="right">By: {{post.author}}</p><br><br>
             <p>{{post.description}}</p>
-            <p>{{post.date | date: 'fullDate'}} | <a href=""><i class="material-icons">comment</i> Comments</a> | <a href=""><i class="material-icons">edit</i>Add Comment</a></p>
+            <p>{{post.date | date: 'fullDate'}} |
+              <a href="" ng-click="showComment = !showComment">
+                <i class="material-icons">comment</i> Comments</a> |
+              <a href="" ng-click="showAdd = !showAdd">
+                <i class="material-icons">edit</i>Add Comment</a></p>
+
+            <div ng-show="showComment" ng-repeat="comment in post.comments">
+            <p>{{comment.comment}} <br>
+              From:{{comment.commAuthor}}</p>
+            </div>
+
+            <div>
+            <form ng-show="showAdd" ng-submit="addComment(form)" class="form" method="post">
+              <label for="author">Author</label>
+              <input type="text" name="author" ng-model="form.commAuthor">
+              <label for="comment">Comment</label>
+              <textarea id="comment" name="comment" class="materialize-textarea" ng-model="form.comment"></textarea><br>
+              <input type="submit" name="submit">
+            </form>
+            </div>
+
           </div>
         </div>
       </div>
