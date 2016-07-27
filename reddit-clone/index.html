@@ -17,7 +17,7 @@
       <div class="nav-wrapper blue">
         <a href="#!" class="brand-logo logo">Reddit Clone</a>
         <ul class="right">
-          <li><a ng-click="postForm = true">+Submit Post</a></li>
+          <li><a ng-click="postForm = !postForm">+Submit Post</a></li>
           <li><input type="search" name="search" placeholder="Search"></li>
           <!-- Dropdown Trigger -->
           <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Sort By<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -29,7 +29,7 @@
       <div class="row center">
         <h4>Add an Article</h4>
       </div>
-      <form class="form" ng-submit="addPost()" method="post">
+      <form name="post" class="form" ng-submit="addPost()" method="post">
         <label for="title">Title</label>
         <input id="title" type="text" name="title" ng-model="title"><br>
         <label for="author">Author</label>
@@ -38,7 +38,7 @@
         <textarea id="description" name="description" class="materialize-textarea" ng-model="description"></textarea><br>
         <label for="image_url">Image URL</label>
         <input id="image_url" type="text" name="image_url" ng-model="image_url">
-        <center><input type="submit" name="Submit" ng-click="postForm = false"></center><br><br>
+        <center><input type="submit" name="Submit" ng-click="postForm = !postForm"></center><br><br>
       </form>
     </div>
 
@@ -64,7 +64,7 @@
             </div>
 
             <div>
-            <form ng-show="showAdd" ng-submit="addComment(form)" class="form" method="post">
+            <form name="comment" ng-show="showAdd" ng-submit="addComment(form)" class="form" method="post">
               <label for="author">Author</label>
               <input type="text" name="author" ng-model="form.commAuthor">
               <label for="comment">Comment</label>
